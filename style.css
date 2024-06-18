@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+SK:wght@100..400&family=Quicksand:wght@300..700&display=swap');
+
+:root{
+    --color-white: #ffffff;
+    --color-light: #f1f5f9;
+    --color-black: #121212;
+    --color-night: #02598b;
+
+    --color-red: #ff0a0a;
+    --color-blue: #1a73e8;
+    --color-gray: #80868b;
+    --color-grayish: #dadce0;
+
+    --shadow-normal: 0 1px 3px 0 rgba(0 , 0, 0, 0.1),
+                     0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                     0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+body{
+    font-family: "Quicksand", sans-serif;
+    line-height: 1.5;
+    background: var(--color-light);
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 80rem;
+    min-height: 100vh;
+    width: 100%;
+    padding: 0 0.5rem;
+    margin: 0 auto;
+}
+
+.wrapper{
+    overflow-x: auto;
+    max-width: 60rem;
+    width: 600px;
+    margin: 2rem auto;
+    padding: 2rem 2.5rem;
+    border: none;
+    outline: none;
+    border-radius: 0.25rem;
+    color: var(--color-black);
+    background: var(--color-white);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+
+.text{
+    font-family: inherit;
+    line-height: inherit;
+    text-transform: unset;
+}
+
+.text-large{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-black);
+    text-shadow: 2px 2px  10px rgba(0, 0, 0, 0.269);
+}
+
+.text-normal{
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-black);
+}
+
+.text-links{
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-blue);
+    text-decoration: none;
+}
+.text-links:hover{
+    text-decoration: underline;
+}
+
+.form{
+    width: 100%;
+    height: auto;
+    margin-top: 2rem;
+}
+
+.form input{
+    font-size: 20px;
+}
+
+.form input::placeholder{
+    font-style: italic;
+}
+
+.input-control{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+.input-field{
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: inherit;
+    width: 100%;
+    height: 65px;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    outline: none;
+    border-radius: 2rem;
+    color: var(--color-black);
+    background: var(--color-light);
+    text-transform: unset;
+}
+
+.input-submit{
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: inherit;
+    cursor: pointer;
+    min-width: 40%;
+    height: auto;
+    padding: 0.65rem 1.25rem;
+    border: none;
+    outline: none;
+    border-radius: 2rem;
+    color: var(--color-white);
+    background: var(--color-blue);
+    box-shadow: var(--shadow-medium);
+    text-transform: capitalize;
+}
+
+.input-submit:hover{
+    background: #1250a1;
+}
+
+.input-reset{
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: inherit;
+    cursor: pointer;
+    min-width: 40%;
+    height: auto;
+    padding: 0.65rem 1.25rem;
+    border: none;
+    outline: none;
+    border-radius: 2rem;
+    color: var(--color-white);
+    background: var(--color-red);
+    box-shadow: var(--shadow-medium);
+    text-transform: capitalize;
+}
+
+.input-reset:hover{
+    background: #b80808;
+}
+
+#resultado{
+    display: none;
+}
+
+.title{
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 19px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.result{
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 36px;
+    color: rgb(137, 137, 137);
+    margin-bottom: 10px;
+}
+
+table{
+    margin: auto;
+    display: block;
+    width: max-content;
+    border-collapse: collapse;
+}
+
+td, th{
+    border: 1.5px solid rgba(0, 0, 0, 0.459);
+    padding: 2px 3px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    height: 20px;
+    width: 150px;
+}
+
+/* Configuração para outras medias*/
+
+/* 
+    • Para telas pequenas: até 600px
+    • Para celulares: 600px - 768px
+    • Para tablets e iPad: 768px - 992px
+    • Para laptops e desktop: 992px - 1200px
+    • Para Grandes telas: 1200px e mais
+*/
+
+@media screen and (min-width: 768px){
+    .wrapper{
+        width: 850px;
+    }
+
+    td, th{
+        font-size: 20px;
+        height: 60px;
+        width: 200px;
+    }
+
+    img{
+        width: 120px;
+    }
+}

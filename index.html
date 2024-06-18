@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./img/cepnsa-logo.png" type="image/x-icon">
+    <title>IP | MakeneDev</title>
+</head>
+
+<body>
+    <div class="container">
+        <section class="wrapper">
+            <div class="heading">
+                <h1 class="text-large">Endereço IP</h1>
+                <p class="text text-normal">Deseja mudar para <span><a href="#" class="text text-links">VLSM</a></span> ?</p>
+            </div>
+
+            <div class="form">
+                <div class="input-control">
+                    <input type="text" name="endereco-ip" id="ip" class="input-field" placeholder="Endereço IP"
+                        autocomplete="on">
+                </div>
+                <div class="input-control">
+                    <input type="number" name="prefixo" id="prefix" class="input-field" placeholder="Prefixo" min="0"
+                        max="32" autocomplete="on">
+                </div>
+                <div class="input-control">
+                    <button class="input-submit" onclick="calculateSubnetMask()">Calcular</button>
+                    <button class="input-reset" onclick="clearFields()">Limpar</button>
+                </div>
+            </div>
+
+            <div id="resultados">
+                <p class="title" id="mascara"></p> <!---Máscara de Sub-rede--->
+                <div class="result" id="result"></div>
+
+                <p class="title" id="numSaltos"></p> <!---Número de Saltos--->
+                <div class="result" id="saltos"></div>
+
+                <div id="tabela"></div>
+            </div>
+        </section>
+    </div>
+    <!------192.168.252.15---->
+    <script src="main.js"></script>
+</body>
+
+</html>
