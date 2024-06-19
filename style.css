@@ -209,6 +209,10 @@ td, th{
     width: 95px;
 }
 
+.no-border{
+    border: none;
+}
+
 /* Configuração para outras medias*/
 
 /* 
