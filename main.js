@@ -3,11 +3,26 @@ function calculateSubnetMask() {
     const prefix = parseInt(document.getElementById('prefix').value);
     const resultDiv = document.getElementById('result');
     const ups = document.getElementById('saltos');
+    const mascara = document.getElementById('mascara');
     const table = document.getElementById('tabela');
 
-    if (!validateIP(ip) || isNaN(prefix) || prefix < 0 || prefix > 32) {
-        resultDiv.innerHTML = 'Por favor, insira um endereço IP e prefixo válidos.';
-        return;
+    if (!validateIP(ip)) {
+        mascara.innerHTML = '<p class="erro">Endereço IP inválido.</p>';
+        document.getElementById('result').innerHTML = '';
+        document.getElementById('numSaltos').innerHTML = '';
+        document.getElementById('saltos').innerHTML = '';
+        document.getElementById('tabela').innerHTML = '';
+        document.querySelector('.positivo').innerHTML = '';
+        document.querySelector('.negativo').innerHTML = '';
+    }
+    else if (isNaN(prefix) || prefix < 25 || prefix > 32) {
+        mascara.innerHTML = '<p class="erro">Prefixo inválido. Tente colocar um número no intervalo de 25-32 sem caracteres.</p>';
+        document.getElementById('result').innerHTML = '';
+        document.getElementById('numSaltos').innerHTML = '';
+        document.getElementById('saltos').innerHTML = '';
+        document.getElementById('tabela').innerHTML = '';
+        document.querySelector('.positivo').innerHTML = '';
+        document.querySelector('.negativo').innerHTML = '';
     }
 
     const subnetMask = getSubnetMask(prefix);
@@ -20,19 +35,19 @@ function calculateSubnetMask() {
     document.getElementById('numSaltos').innerHTML = 'Número de Saltos';
     ups.innerHTML = `${totalHosts}`;
     table.innerHTML = `
-    <table>
-            <tr>
-                <th>Rede</th>
-                <th>Host</th>
-                <th>Broadcast</th>
-            </tr>
-            ${tableContent}
-            <tr>
-                <td class="no-border">+</td>
-                <td class="no-border"></td>
-                <td class="no-border">-</td>
-            </tr>
-    </table>`;
+        <table>
+                <tr>
+                    <th>Rede</th>
+                    <th>Host</th>
+                    <th>Broadcast</th>
+                </tr>
+                ${tableContent}
+                <tr>
+                    <td class="no-border">+</td>
+                    <td class="no-border"></td>
+                    <td class="no-border">-</td>
+                </tr>
+        </table>`;
     document.querySelector('.positivo').innerHTML = '+';
     document.querySelector('.negativo').innerHTML = '-';
 }
