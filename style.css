@@ -213,6 +213,11 @@ td, th{
     border: none;
 }
 
+.erro{
+    background: rgb(255, 150, 150);
+    padding: 10px;
+}
+
 /* Configuração para outras medias*/
 
 /* 
