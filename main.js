@@ -27,7 +27,14 @@ function calculateSubnetMask() {
                 <th>Broadcast</th>
             </tr>
             ${tableContent}
+            <tr>
+                <td class="no-border">+</td>
+                <td class="no-border"></td>
+                <td class="no-border">-</td>
+            </tr>
     </table>`;
+    document.querySelector('.positivo').innerHTML = '+';
+    document.querySelector('.negativo').innerHTML = '-';
 }
 
 function clearFields() {
@@ -38,6 +45,8 @@ function clearFields() {
     document.getElementById('numSaltos').innerHTML = '';
     document.getElementById('saltos').innerHTML = '';
     document.getElementById('tabela').innerHTML = '';
+    document.querySelector('.positivo').innerHTML = '';
+    document.querySelector('.negativo').innerHTML = '';
 }
 
 function validateIP(ip) {
@@ -67,12 +76,12 @@ function generateTable(ip, prefix) {
         const subnetInt = ipInt + (i * subnetSize);
         const { networkAddress, broadcastAddress, firstHost, lastHostOctet } = calculateAddresses(subnetInt, prefix);
         tableContent += `
-              <tr>
-                  <td>${networkAddress}</td>
-                  <td>${firstHost} &rarr; ${lastHostOctet}</td>
-                  <td>${broadcastAddress}</td>
-              </tr>
-          `;
+            <tr>
+                <td>${networkAddress}</td>
+                <td>${firstHost} &rarr; ${lastHostOctet}</td>
+                <td>${broadcastAddress}</td>
+            </tr>
+        `;
     }
     return tableContent;
 }
