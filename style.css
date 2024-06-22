@@ -30,7 +30,8 @@
 body{
     font-family: "Quicksand", sans-serif;
     line-height: 1.5;
-    background: var(--color-light);
+    background: rgb(255,255,255);
+    background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(141,135,255,1) 50%, rgba(255,0,0,1) 100%);
 }
 
 .container{
@@ -56,6 +57,8 @@ body{
     color: var(--color-black);
     background: var(--color-white);
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s, color 0.3s;
+    position: relative; /* Para posicionamento do toggle */
 }
 
 
@@ -71,7 +74,6 @@ body{
     font-size: 2rem;
     font-weight: bold;
     color: var(--color-black);
-    text-shadow: 2px 2px  10px rgba(0, 0, 0, 0.269);
 }
 
 .text-normal{
@@ -128,6 +130,10 @@ body{
     text-transform: unset;
 }
 
+.input-field:focus{
+    border: 2px solid black;
+}
+
 .input-submit{
     font-family: inherit;
     font-size: 1rem;
@@ -172,10 +178,6 @@ body{
     background: #b80808;
 }
 
-#resultado{
-    display: none;
-}
-
 .title{
     text-align: center;
     color: rgb(0, 0, 0);
@@ -214,11 +216,12 @@ td, th{
 }
 
 .erro{
-    background: rgb(255, 150, 150);
+    background: #c22727;
+    color: white;
     padding: 10px;
 }
 
-/* Configuração para outras medias*/
+/* Configuração para outras medias   192.168.10.1*/
 
 /* 
     • Para telas pequenas: até 600px
@@ -242,4 +245,121 @@ td, th{
     img{
         width: 120px;
     }
+}
+
+
+
+/*------------ Modo Escuro------------------*/
+body.dark-mode {
+    --color-white: #ffffff;
+    --color-light: #121212;
+    --color-black: #ffffff;
+    --color-night: #1d51c2;
+
+    --color-red: #ff0a0a;
+    --color-blue: #1a73e8;
+    --color-gray: #80868b;
+    --color-grayish: #112040;
+
+    --shadow-normal: 0 1px 3px 0 rgba(255, 255, 255, 0.1),
+        0 1px 2px 0 rgba(255, 255, 255, 0.06);
+    --shadow-medium: 0 4px 6px -1px rgba(255, 255, 255, 0.1),
+        0 2px 4px -1px rgba(255, 255, 255, 0.06);
+    --shadow-large: 0 10px 15px -3px rgba(255, 255, 255, 0.1),
+        0 4px 6px -2px rgba(255, 255, 255, 0.05);
+
+    background: rgb(139,139,139);
+    background: linear-gradient(135deg, rgb(105, 105, 105) 0%, rgb(68, 66, 123) 50%, rgb(133, 0, 0) 100%);
+}
+
+body.dark-mode .wrapper {
+    color: var(--color-white);
+    background-color: #071115;   
+}
+
+body.dark-mode .input-field:focus{
+    border: 2px solid rgb(255, 255, 255);
+    color: var(--color-black);
+}
+
+body.dark-mode .form input{
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+}
+
+body.dark-mode .form input::placeholder {
+    color: white;
+}
+
+body.dark-mode .form input{
+    background-color: #122c36;
+}
+
+body.dark-mode .input-submit {
+    background: var(--color-night);
+    box-shadow: none;
+}
+
+body.dark-mode .input-submit:hover{
+    background-color: #163c8e;
+    transition: 0.3s;
+}
+
+body.dark-mode .input-reset {
+    background: var(--color-red);
+    box-shadow: none;
+}
+
+body.dark-mode .input-reset:hover{
+    background-color: #a40707;
+    transition: 0.3s;
+}
+
+body.dark-mode .title{
+    color: rgb(255, 255, 255);
+}
+
+body.dark-mode .result{
+    color: rgb(206, 205, 205);
+}
+
+body.dark-mode td{
+    border: 1.5px solid white;
+    color: white;
+}
+
+body.dark-mode th{
+    border: 1.5px solid white;
+    color: white;
+}
+
+body.dark-mode .no-border{
+    border: none;
+}
+
+body.dark-mode .erro {
+    background: #c51515;
+    color: var(--color-black);
+}
+
+/* Toggle Dark Mode Button */
+.toggle-dark-mode {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 25px;
+    height: 24px;
+    border-radius: 50%;
+    background: #333;
+    cursor: pointer;
+    z-index: 1000;
+    transition: background-color 0.5s;
+}
+
+body.dark-mode .toggle-dark-mode {
+    background: white;
+}
+
+body.dark-mode .toggle-dark-mode::after {
+    transform: translateY(10px);
 }
