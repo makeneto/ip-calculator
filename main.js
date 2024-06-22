@@ -7,7 +7,7 @@ function calculateSubnetMask() {
     const table = document.getElementById('tabela');
 
     if (!validateIP(ip)) {
-        mascara.innerHTML = '<p class="erro">Endereço IP inválido.</p>';
+        mascara.innerHTML = '<p class="erro">⚠️Endereço IP inválido.</p>';
         document.getElementById('result').innerHTML = '';
         document.getElementById('numSaltos').innerHTML = '';
         document.getElementById('saltos').innerHTML = '';
@@ -90,6 +90,7 @@ function generateTable(ip, prefix) {
     for (let i = 0; i < numSubnets; i++) {
         const subnetInt = ipInt + (i * subnetSize);
         const { networkAddress, broadcastAddress, firstHost, lastHostOctet } = calculateAddresses(subnetInt, prefix);
+        
         tableContent += `
             <tr>
                 <td>${networkAddress}</td>
@@ -132,4 +133,8 @@ function intToIp(int) {
 
 function getSubnetMaskAsInt(prefix) {
     return (-1 << (32 - prefix)) >>> 0;
+}
+
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
 }
