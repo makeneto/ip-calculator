@@ -370,7 +370,7 @@ body.dark-mode .toggle-dark-mode::after {
 
 .card-image {
     min-height: 170px;
-    background: #c9c9c9 url('assets/warning.jpg') no-repeat top;
+    background: #c9c9c9 url('img/warning.jpg') no-repeat top;
     background-size: cover;
     border-radius: 15px;
 }
@@ -424,7 +424,7 @@ body.dark-mode .toggle-dark-mode::after {
     
     .card-image {
         min-height: 270px;
-        background: #c9c9c9 url('assets/warning.jpg') no-repeat center bottom;
+        background: #c9c9c9 url('img/warning.jpg') no-repeat center bottom;
         background-size: cover;
         border-radius: 15px;
     }
