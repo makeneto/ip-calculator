@@ -339,7 +339,7 @@ body.dark-mode .toggle-dark-mode::after {
 /* -------------ON/OFFLINE MODE------------ */
 
 #card {
-    display: block;
+    display: none;
     overflow-x: auto;
     max-width: 60rem;
     width: 350px;
@@ -409,6 +409,7 @@ body.dark-mode .toggle-dark-mode::after {
 
     #card{
         width: 850px;
+        min-height: 170px;
     }
     
     .card-image {
