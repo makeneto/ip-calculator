@@ -142,6 +142,7 @@ function toggleDarkMode() {
 window.addEventListener("offline", (event) => {
     const estado = document.getElementById('status');
     const card = document.querySelector('.wrapper');
+    card.style.display = 'none';
     const paragrafo = document.querySelector('#status p');
     const statusText = document.getElementById('text');
     
@@ -166,6 +167,4 @@ window.addEventListener("offline", (event) => {
 
     paragrafo.style.textAlign = 'center';
     paragrafo.style.fontSize = '20px';
-
-    card.style.display = 'none';
 })
