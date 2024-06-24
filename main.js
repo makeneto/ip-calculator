@@ -151,7 +151,6 @@ window.addEventListener("offline", (event) => {
 })
 
 window.addEventListener("online", (event) => {
-    alert("Conexão Restaurada!📶")
     const estado = document.getElementById('card');
     const calculator = document.querySelector('.wrapper');
     calculator.style.display = 'block';
