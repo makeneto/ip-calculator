@@ -48,7 +48,7 @@ body{
 .wrapper{
     overflow-x: auto;
     max-width: 60rem;
-    width: 600px;
+    width: 590px;
     margin: 2rem auto;
     padding: 2rem 2.5rem;
     border: none;
@@ -221,34 +221,6 @@ td, th{
     padding: 10px;
 }
 
-/* Configuração para outras medias   192.168.10.1*/
-
-/* 
-    • Para telas pequenas: até 600px
-    • Para celulares: 600px - 768px
-    • Para tablets e iPad: 768px - 992px
-    • Para laptops e desktop: 992px - 1200px
-    • Para Grandes telas: 1200px e mais
-*/
-
-@media screen and (min-width: 768px){
-    .wrapper{
-        width: 850px;
-    }
-
-    td, th{
-        font-size: 20px;
-        height: 60px;
-        width: 200px;
-    }
-
-    img{
-        width: 120px;
-    }
-}
-
-
-
 /*------------ Modo Escuro------------------*/
 body.dark-mode {
     --color-white: #ffffff;
@@ -362,4 +334,98 @@ body.dark-mode .toggle-dark-mode {
 
 body.dark-mode .toggle-dark-mode::after {
     transform: translateY(10px);
+}
+
+/* -------------ON/OFFLINE MODE------------ */
+
+#card {
+    display: none;
+    overflow-x: auto;
+    max-width: 60rem;
+    width: 350px;
+    padding: 20px;
+    min-height: 370px;
+    border-radius: 20px;
+    background: #e8e8e8;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: 0.4s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+}
+
+.card:hover {
+    translate: 0 -10px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #f60909;
+    margin: 15px 0 0 10px;
+    font-family: "Quicksand", sans-serif;
+}
+
+.card-image {
+    min-height: 170px;
+    background: #c9c9c9 url('assets/warning.jpg') no-repeat top;
+    background-size: cover;
+    border-radius: 15px;
+}
+
+.card-body {
+    margin: 13px 0 0 10px;
+    color: rgb(31, 31, 31);
+    font-size: 15px;
+    font-family: "Quicksand", sans-serif;
+}
+
+.footer {
+    float: right;
+    margin: 28px 0 0 18px;
+    font-size: 13px;
+    color: #636363;
+}
+
+.by-name {
+    font-weight: 700;
+}
+
+/* Configuração para outras medias   192.168.10.1*/
+
+/* 
+    • Para telas pequenas: até 600px
+    • Para celulares: 600px - 768px
+    • Para tablets e iPad: 768px - 992px
+    • Para laptops e desktop: 992px - 1200px
+    • Para Grandes telas: 1200px e mais
+*/
+
+@media screen and (min-width: 768px){
+    .wrapper{
+        width: 850px;
+    }
+
+    td, th{
+        font-size: 20px;
+        height: 60px;
+        width: 200px;
+    }
+
+    img{
+        width: 120px;
+    }
+
+    #card{
+        width: 850px;
+    }
+    
+    .card-image {
+        min-height: 270px;
+        background: #c9c9c9 url('assets/warning.jpg') no-repeat center bottom;
+        background-size: cover;
+        border-radius: 15px;
+    }
 }
