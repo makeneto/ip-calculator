@@ -138,3 +138,10 @@ function getSubnetMaskAsInt(prefix) {
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
 }
+
+const statusText = document.getElementById('status');
+window.addEventListener("offline", (event) => {
+    console.log("Sem Internet");
+    statusText.innerHTML = 'Você está sem internet';
+    console.log(event);
+})
