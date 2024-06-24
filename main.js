@@ -139,10 +139,12 @@ function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
 }
 
-const estado = document.getElementById('status');
-const paragrafo = document.querySelector('#status p');
-const statusText = document.getElementById('text');
 window.addEventListener("offline", (event) => {
+    const estado = document.getElementById('status');
+    const card = document.querySelector('.wrapper');
+    const paragrafo = document.querySelector('#status p');
+    const statusText = document.getElementById('text');
+    
     console.log("Sem Internet");
     statusText.innerHTML = 'Você está sem internet❌📶';    
     console.log(event);
@@ -164,4 +166,6 @@ window.addEventListener("offline", (event) => {
 
     paragrafo.style.textAlign = 'center';
     paragrafo.style.fontSize = '20px';
+
+    card.style.display = 'none';
 })
