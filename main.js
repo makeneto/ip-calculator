@@ -140,31 +140,23 @@ function toggleDarkMode() {
 }
 
 window.addEventListener("offline", (event) => {
-    const estado = document.getElementById('status');
-    const card = document.querySelector('.wrapper');
-    card.style.display = 'none';
-    const paragrafo = document.querySelector('#status p');
-    const statusText = document.getElementById('text');
-    
-    console.log("Sem Internet");
-    statusText.innerHTML = 'Você está sem internet❌📶';    
+    const estado = document.getElementById('card');
+    const calculator = document.querySelector('.wrapper');
+    calculator.style.display = 'none';
+
+    console.log("Sem Internet");   
     console.log(event);
 
-    estado.style.overflow = 'auto';
-    estado.style.width = '400px';
-    estado.style.padding = '2rem 2.5rem';
-    estado.style.border = 'none';
-    estado.style.outline = 'none';
-    estado.style.borderRadius = '0.25rem';
-    estado.style.color = 'var(--color-black)';
-    estado.style.background ='var(--color-white)';
-    estado.style.boxShadow = '0px 0px 20px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
-    estado.style.transition = 'background-color 0.3s', color = '0.3s';
-    estado.style.position = 'absolute';
-    estado.style.top = '50%';
-    estado.style.left = '50%';
-    estado.style.transform = 'translate(-50%, -50%)';
+    estado.style.display = 'block';
+})
 
-    paragrafo.style.textAlign = 'center';
-    paragrafo.style.fontSize = '20px';
+window.addEventListener("online", (event) => {
+    const estado = document.getElementById('card');
+    const calculator = document.querySelector('.wrapper');
+    calculator.style.display = 'block';
+
+    console.log("Com Internet");   
+    console.log(event);
+
+    estado.style.display = 'none';
 })
