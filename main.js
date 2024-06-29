@@ -5,9 +5,9 @@ function calculateSubnetMask() {
     const ups = document.getElementById('saltos');
     const mascara = document.getElementById('mascara');
     const table = document.getElementById('tabela');
-
-    if (!validateIP(ip)) {
-        mascara.innerHTML = '<p class="erro">⚠️Endereço IP inválido.</p>';
+    if (ip == '' && isNaN(prefix)){
+        mascara.innerHTML = '<p class="erro">Por favor, Preencha os campos☝🏽.</p>';
+        document.querySelector('.striped').innerHTML = '';
         document.getElementById('result').innerHTML = '';
         document.getElementById('numSaltos').innerHTML = '';
         document.getElementById('saltos').innerHTML = '';
@@ -15,8 +15,41 @@ function calculateSubnetMask() {
         document.querySelector('.positivo').innerHTML = '';
         document.querySelector('.negativo').innerHTML = '';
     }
-    else if (isNaN(prefix) || prefix < 25 || prefix > 32) {
+    else if (ip == '') {
+        mascara.innerHTML = '<p class="erro">Por favor, Introduza o Endereço IP☝🏽.</p>';
+        document.querySelector('.striped').innerHTML = '';
+        document.getElementById('result').innerHTML = '';
+        document.getElementById('numSaltos').innerHTML = '';
+        document.getElementById('saltos').innerHTML = '';
+        document.getElementById('tabela').innerHTML = '';
+        document.querySelector('.positivo').innerHTML = '';
+        document.querySelector('.negativo').innerHTML = '';
+    }
+
+    else if (!validateIP(ip)) {
+        mascara.innerHTML = '<p class="erro">⚠️Endereço IP inválido.</p>';
+        document.querySelector('.striped').innerHTML = '';
+        document.getElementById('result').innerHTML = '';
+        document.getElementById('numSaltos').innerHTML = '';
+        document.getElementById('saltos').innerHTML = '';
+        document.getElementById('tabela').innerHTML = '';
+        document.querySelector('.positivo').innerHTML = '';
+        document.querySelector('.negativo').innerHTML = '';
+    }
+
+    else if(isNaN(prefix)){
+        mascara.innerHTML = '<p class="erro">Por favor, Introduza o prefixo☝🏽.</p>';
+        document.querySelector('.striped').innerHTML = '';
+        document.getElementById('result').innerHTML = '';
+        document.getElementById('numSaltos').innerHTML = '';
+        document.getElementById('saltos').innerHTML = '';
+        document.getElementById('tabela').innerHTML = '';
+        document.querySelector('.positivo').innerHTML = '';
+        document.querySelector('.negativo').innerHTML = '';
+    }
+    else if (prefix < 25 || prefix > 32) {
         mascara.innerHTML = '<p class="erro">Prefixo inválido. Tente colocar um número no intervalo de 25-32 sem caracteres.</p>';
+        document.querySelector('.striped').innerHTML = '';
         document.getElementById('result').innerHTML = '';
         document.getElementById('numSaltos').innerHTML = '';
         document.getElementById('saltos').innerHTML = '';
@@ -29,7 +62,9 @@ function calculateSubnetMask() {
     const totalHosts = Math.pow(2, 32 - prefix);
     const { networkAddress, broadcastAddress, firstHost, lastHost } = calculateAddresses(ip, prefix);
     const tableContent = generateTable(ip, prefix);
+    const textResultado = document.querySelector('.striped');
 
+    textResultado.style.display = 'flex';
     document.getElementById('mascara').innerHTML = 'Máscara de Sub-rede';
     resultDiv.innerHTML = `${subnetMask}`;
     document.getElementById('numSaltos').innerHTML = 'Número de Saltos';
@@ -52,17 +87,6 @@ function calculateSubnetMask() {
     document.querySelector('.negativo').innerHTML = '-';
 }
 
-function clearFields() {
-    document.getElementById('ip').value = '';
-    document.getElementById('prefix').value = '';
-    document.getElementById('mascara').innerHTML = '';
-    document.getElementById('result').innerHTML = '';
-    document.getElementById('numSaltos').innerHTML = '';
-    document.getElementById('saltos').innerHTML = '';
-    document.getElementById('tabela').innerHTML = '';
-    document.querySelector('.positivo').innerHTML = '';
-    document.querySelector('.negativo').innerHTML = '';
-}
 
 function validateIP(ip) {
     const ipPattern = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
@@ -83,21 +107,35 @@ function getSubnetMask(prefix) {
 
 function generateTable(ip, prefix) {
     let tableContent = '';
-    const numSubnets = 4;
     const subnetSize = Math.pow(2, 32 - prefix);
     const ipInt = ipToInt(ip.split('.').map(Number));
-
-    for (let i = 0; i < numSubnets; i++) {
-        const subnetInt = ipInt + (i * subnetSize);
-        const { networkAddress, broadcastAddress, firstHost, lastHostOctet } = calculateAddresses(subnetInt, prefix);
-        
-        tableContent += `
+    if(prefix == 25){
+        for (let i = 0; i < 2; i++) {
+            const subnetInt = ipInt + (i * subnetSize);
+            const { networkAddress, broadcastAddress, firstHost, lastHostOctet } = calculateAddresses(subnetInt, prefix);
+            
+            tableContent += `
+                <tr>
+                    <td>${networkAddress}</td>
+                    <td>${firstHost} &rarr; ${lastHostOctet}</td>
+                    <td>${broadcastAddress}</td>
+                </tr>
+                `;
+        }
+    }
+    else{
+        for (let i = 0; i < 4; i++) {
+            const subnetInt = ipInt + (i * subnetSize);
+            const { networkAddress, broadcastAddress, firstHost, lastHostOctet } = calculateAddresses(subnetInt, prefix);
+            
+            tableContent += `
             <tr>
-                <td>${networkAddress}</td>
-                <td>${firstHost} &rarr; ${lastHostOctet}</td>
-                <td>${broadcastAddress}</td>
+            <td>${networkAddress}</td>
+            <td>${firstHost} &rarr; ${lastHostOctet}</td>
+            <td>${broadcastAddress}</td>
             </tr>
-        `;
+            `;
+        }
     }
     return tableContent;
 }
@@ -106,10 +144,10 @@ function calculateAddresses(ipInt, prefix) {
     const mask = getSubnetMaskAsInt(prefix);
     const networkInt = ipInt & mask;
     const broadcastInt = networkInt | ~mask;
-
+    
     const firstHostInt = networkInt + 1;
     const lastHostInt = broadcastInt - 1;
-
+    
     return {
         networkAddress: intToIp(networkInt),
         broadcastAddress: intToIp(broadcastInt),
@@ -146,7 +184,7 @@ window.addEventListener("offline", (event) => {
 
     console.log("Sem Internet");   
     console.log(event);
-
+    
     estado.style.display = 'block';
 })
 
@@ -157,6 +195,19 @@ window.addEventListener("online", (event) => {
 
     console.log("Com Internet");   
     console.log(event);
-
+    
     estado.style.display = 'none';
 })
+
+function clearFields() {
+    document.getElementById('ip').value = '';
+    document.getElementById('prefix').value = '';
+    document.querySelector('.striped').innerHTML = '';
+    document.getElementById('mascara').innerHTML = '';
+    document.getElementById('result').innerHTML = '';
+    document.getElementById('numSaltos').innerHTML = '';
+    document.getElementById('saltos').innerHTML = '';
+    document.getElementById('tabela').innerHTML = '';
+    document.querySelector('.positivo').innerHTML = '';
+    document.querySelector('.negativo').innerHTML = '';
+}
