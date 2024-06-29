@@ -178,6 +178,27 @@ body{
     background: #b80808;
 }
 
+.striped{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.striped-line{
+    flex: auto;
+    flex-basis: auto;
+    height: 2px;
+    background: #0fd85c;
+}
+
+.striped-text{
+    font-size: 17px;
+    font-weight: bold;
+    color: #0fd85c;
+    margin: 0 1rem;
+}
+
 .title{
     text-align: center;
     color: rgb(0, 0, 0);
@@ -285,6 +306,10 @@ body.dark-mode .input-reset {
 body.dark-mode .input-reset:hover{
     background-color: #a40707;
     transition: 0.3s;
+}
+
+body.dark-mode .striped-text{
+    color: #0DFF6A;
 }
 
 body.dark-mode .title{
