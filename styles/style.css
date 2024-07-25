@@ -48,9 +48,9 @@ body{
 .wrapper{
     overflow-x: auto;
     max-width: 60rem;
-    width: 590px;
+    width: 600px;
     margin: 2rem auto;
-    padding: 2rem 2.5rem;
+    padding: 1.5rem 2.5rem 10px;
     border: none;
     outline: none;
     border-radius: 0.25rem;
@@ -317,7 +317,7 @@ body.dark-mode .erro {
 /* Toggle Dark Mode Button */
 .toggle-dark-mode {
     position: absolute;
-    top: 20px;
+    top: 37px;
     right: 20px;
     width: 25px;
     height: 24px;
@@ -408,4 +408,15 @@ body.dark-mode .toggle-dark-mode::after {
         background-size: cover;
         border-radius: 15px;
     }
+}
+
+/* Copyright */
+#copyright{
+    margin-bottom: 0;
+    align-items: center;
+}
+
+.copyright{
+    font-size: 11px;
+    text-align: center;
 }
