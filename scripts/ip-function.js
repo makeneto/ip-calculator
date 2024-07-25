@@ -73,7 +73,19 @@ function getSubnetMaskAsInt(prefix) {
     return (-1 << (32 - prefix)) >>> 0;
 }
 
-// Modo Escuro
+// Mudar o tema
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
 }
+
+// Copyright-Year
+function year() {
+    const currentYear = new Date()
+    const year = currentYear.getFullYear()
+
+    const copyright = document.createElement('p')
+    copyright.textContent = `© ${year} makeneDev, Inc.`
+    copyright.className = 'copyright'
+    document.querySelector('#copyright').appendChild(copyright)
+}
+year() 
