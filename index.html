@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="shortcut icon" href="./img/cepnsa-logo.png" type="image/x-icon">
+    <title>IP | MakeneDev</title>
+</head>
+
+<body>
+    <div class="container">
+        <section class="wrapper">
+            <div class="heading">
+                <h1 class="text-large">Endereço IP</h1>
+                <p class="text text-normal">Deseja mudar para <span><a href="https://vlsm-seven.vercel.app/" target="_self" class="text text-links">VLSM</a></span> ?</p>
+            </div>
+
+            <!---Formulário de entrada de endereço IP e prefixo----->
+            <div class="form">
+                <div class="input-control">
+                    <input type="text" name="endereco-ip" id="ip" class="input-field" placeholder="Endereço IP"
+                        autocomplete="on">
+                </div>
+                <div class="input-control">
+                    <input type="number" name="prefixo" id="prefix" class="input-field" placeholder="Prefixo" min="25"
+                        max="32" autocomplete="on">
+                </div>
+                <div class="input-control">
+                    <button class="input-submit">Calcular</button>
+                    <button class="input-reset" onclick="clearFields()">Limpar</button>
+                </div>
+            </div>
+
+            <!---Resultados----->
+            <div id="resultados">
+                <p class="title" id="mascara"></p>
+                <div class="result" id="result"></div>
+                <p class="title" id="numSaltos"></p>
+                <div class="result" id="saltos"></div>
+                <div id="tabela"></div>
+            </div>
+
+            <!-- Toggle Dark Mode Button -->
+            <div class="toggle-dark-mode" onclick="toggleDarkMode()"></div>
+        </section>
+    </div>
+
+    <!-- Card de erro caso não haja conexão com a internet -->
+    <div id="card">
+        <p class="card-title">Sem Conexão com a Internet❌📶</p>
+        <p class="card-body">
+            Parece que você está sem conexão com a internet no momento. Para acessar todo o conteúdo e funcionalidades
+            desta página, por favor, verifique sua conexão e tente novamente.
+        </p>
+        <p class="footer">Escrito por <span class="by-name">Makene Neto</p>
+    </div>
+
+    <script src="scripts/ip-function.js"></script>
+    <script src="scripts/ip-app.js"></script>
+</body>
+
+</html>
